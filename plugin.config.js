@@ -52,6 +52,16 @@ const pluginConfig = {
         }
       ]
     }, {
+      code: 'dexscreener',
+      explain: 'View token with dexscreener.',
+      cmds: [
+        {
+          type: 'regex',
+          label: 'Dexscreener',
+          match: '/^0x([A-Fa-f0-9]{40})$/'
+        }
+      ]
+    }, {
       code: 'abi',
       explain: 'abi form',
       cmds: [
