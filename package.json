@@ -1,7 +1,7 @@
 {
-  "name": "utools-tmpl",
-  "version": "1.0.1",
-  "description": "使用 uTools 模板插件的模板",
+  "name": "CryptoChasersTools",
+  "version": "0.0.1",
+  "description": "CryptoChasers工具箱",
   "main": "main.ts",
   "scripts": {
     "dev": "set NODE_ENV=development && rollup -c -w",

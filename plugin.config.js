@@ -2,41 +2,66 @@
  * @type { import ('./src/types/utools').PluginConfig }
  */
 const pluginConfig = {
-  pluginName: 'utools-tmpl',
+  pluginName: 'CryptoChasersTools',
   // version: 'v1.0.0',
-  description: '使用模板插件模式',
-  author: '罗君',
-  homepage: 'https://github.com/adams549659584/utools-tmpl',
+  description: 'CryptoChasers工具箱',
+  author: 'GlacierLuo',
+  homepage: '',
   // main: 'index.html',
   preload: 'preload.js',
   logo: 'assets/img/logo.png',
-  platform: ['win32'],
-  // development: {
-  //   main: '',
-  //   preload: '',
-  //   logo: '',
-  //   buildPath: '',
-  // },
-  // pluginSetting: {
-  //   single: true,
-  //   height: 0,
-  // },
   features: [
     {
-      code: 'utools_tmpl_hello_none',
-      explain: '无 UI 模式',
-      cmds: ['hello', 'none'],
-    },
-    {
-      code: 'utools_tmpl_hello_list',
-      explain: '列表模式',
-      cmds: ['hello', 'list'],
-    },
-    {
-      code: 'utools_tmpl_hello_doc',
-      explain: '文档模式',
-      cmds: ['hello', 'doc'],
-    },
+      code: 'txhash',
+      explain: 'Open tx explorer',
+      cmds: [
+        {
+          type: 'regex',
+          label: 'View tx with scan.',
+          match: '/^0x([A-Fa-f0-9]{64})$/'
+        }
+      ]
+    },{
+      code: 'txMagic',
+      explain: '妙妙工具！',
+      cmds: [
+        {
+          type: 'regex',
+          label: '妙妙！',
+          match: '/^0x([A-Fa-f0-9]{64})$/'
+        }
+      ]
+    }, {
+      code: 'address',
+      explain: 'Open address explorer',
+      cmds: [
+        {
+          type: 'regex',
+          label: 'View address with scan.',
+          match: '/^0x([A-Fa-f0-9]{40})$/'
+        }
+      ]
+    }, {
+      code: 'addressMagic',
+      explain: '妙妙工具！',
+      cmds: [
+        {
+          type: 'regex',
+          label: '妙妙！',
+          match: '/^0x([A-Fa-f0-9]{40})$/'
+        }
+      ]
+    }, {
+      code: 'abi',
+      explain: 'abi form',
+      cmds: [
+        {
+          type: 'regex',
+          label: 'abi form',
+          match: '/\[.+?\]/'
+        }
+      ]
+    }
   ],
 };
 export default pluginConfig;
