@@ -62,6 +62,16 @@ const pluginConfig = {
         }
       ]
     }, {
+      code: 'input',
+      explain: 'Decode input.',
+      cmds: [
+        {
+          type: 'regex',
+          label: 'Decode input.',
+          match: '/^0x([A-Fa-f0-9]{8,})$/'
+        }
+      ]
+    }, {
       code: 'abi',
       explain: 'abi form',
       cmds: [
