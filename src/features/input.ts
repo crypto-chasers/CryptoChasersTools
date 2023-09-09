@@ -2,11 +2,16 @@ import { TplFeature } from '@/types/utools'
 import request from '@/Helper/HttpHelper'
 import { decodeAbiParameters, parseAbiParameters } from 'viem'
 
+(BigInt.prototype as any).toJSON = function () {
+  return this.toString();
+};
+
 async function multiQuery (input) {
   let sigStr = input.substr(0, 10)
   let res: any = await request.get(`https://api.openchain.xyz/signature-database/v1/lookup?function=${sigStr}&filter=true`)
   let functionName: string = res.result.function[Object.keys(res.result.function)[0]][0].name
-  let args = functionName.match(/\(.+\)$/g)[0].replace('(', '').replace(')', '')
+  let args = functionName.match(/\(.+\)$/g)[0]
+  args = args.substring(1, args.length - 1)
   let argsList = args.split(',')
   return {
     functionName,
@@ -47,12 +52,23 @@ async function decodeInput(input, callback) {
               })
             }
           }
-  
-          list.push({
-            title: `${v}`,
-            description: item.argsList[i].match(/[a-z]+/g)[0],
-            icon: '' // 图标(可选)
-          })
+          console.log(v)
+
+          if (v instanceof Array) {
+            let desc = item.argsList[i].match(/[a-z]+/g)[0]
+            v.map((v, i, arr) => {
+              list.push({
+                title: `ㅤㅤㅤㅤ${JSON.stringify(v).replace(/"/g, '')}`,
+                description: `ㅤㅤㅤㅤ${desc}`
+              })
+            })
+          } else {
+            list.push({
+              title: `ㅤㅤㅤㅤ${v}`,
+              description: `ㅤㅤㅤㅤ${item.argsList[i].match(/[a-z]+/g)[0]}`,
+              icon: '' // 图标(可选)
+            })
+          }
         })
       }
     }
